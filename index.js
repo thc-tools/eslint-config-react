@@ -13,7 +13,8 @@ module.exports = {
         'import/resolver': {
             node: {
                 // Note: will not complain if only _one_ of these files exists.
-                extensions: ['.js', '.jsx']
+                extensions: ['.js', '.jsx'],
+                "webpack": "webpack.config.js"
             }
         }
     },
@@ -232,7 +233,7 @@ module.exports = {
         'no-alert': 'warn',
         // Allowing console logging
         // http://eslint.org/docs/rules/no-console
-        'no-console': 'off',
+        'no-console': 'warn',
         // Eval should not be used in most case
         // http://eslint.org/docs/rules/no-eval
         'no-eval': 'error',

@@ -7,3 +7,6 @@ That way, the react applications only needs one dependency, and one config for a
 ## Rules :
 * Commit must follow [Conventional Commit convention](https://conventionalcommits.org/)
 * [Pre-commit package](https://www.npmjs.com/package/pre-commit) should be use to enforce linting, tests validations, ...
+
+## TODO :
+Check https://github.com/yannickcr/eslint-plugin-react/tree/master/lib for additional rules
