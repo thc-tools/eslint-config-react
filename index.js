@@ -67,88 +67,63 @@ module.exports = {
         'filenames/match-regex': ['warn', '^[a-z\-]+$'],
         //'filenames/match-exported': ['error', 'kebab'],
         //'filenames/no-index': 'error', // Could be a good idea
+
         /* React Plugin */
-        // Warning if the component does not have a display name
-        // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/display-name.md
-        'react/display-name': 'warn',
-        // Warning if props is a boolean as true
-        // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-boolean-value.md
-        'react/jsx-boolean-value': 'warn',
-        // Warning for the positioning of the closing bracket (auto fix)
-        // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-closing-bracket-location.md
-        'react/jsx-closing-bracket-location': 'warn',
-        // Warning for the spaces around props value (auto fix)
-        // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-curly-spacing.md
-        'react/jsx-curly-spacing': 'warn',
-        // Warning for the indentation (4 spaces)
-        // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-indent.md
-        'react/jsx-indent': 'warn',
-        // Warning for the indentation of props (4 spaces)
-        // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-indent-props.md
-        'react/jsx-indent-props': 'warn',
-        // 'react/jsx-max-props-per-line': ['error', { 'maximum': 4 }],
-        // Error on duplicate props
-        // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-duplicate-props.md
-        'react/jsx-no-duplicate-props': 'error',
-        // Warning when using litterals (should be wrapped in JSX, like {'toto'})
-        // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-literals.md
-        'react/jsx-no-literals': 'warn',
-        // Error when using component, without import or declaration
-        // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-undef.md
-        'react/jsx-no-undef': 'error',
-        // 'react/jsx-sort-prop-types': 'error',
-        // 'react/jsx-sort-props': 'error',
-        // Error when using JSX, when missing React variable
-        // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-uses-react.md
-        'react/jsx-uses-react': 'error',
-        // Marking variable used in JSX as used
-        // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-uses-vars.md
-        'react/jsx-uses-vars': 'error',
-        // Error when using component not in Pascal Case
-        // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-pascal-case.md
-        'react/jsx-pascal-case': 'error',
-        // Error when not wrapping JSX in parenthesis
-        // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-wrap-multilines.md
-        'react/jsx-wrap-multilines': 'error',
-        // Error when using dangerously set inner html
-        // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-danger.md
-        'react/no-danger': 'error',
-        // Warning when doing setState in didMount
-        // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-did-mount-set-state.md
-        'react/no-did-mount-set-state': ['warn', 'disallow-in-func'],
-        // Error when using setState in didUpdate
-        // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-did-update-set-state.md
-        'react/no-did-update-set-state': ['warn', 'disallow-in-func'],
-        // Error when trying to mutate the state directly
-        // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-direct-mutation-state.md
-        'react/no-direct-mutation-state': 'error',
-        // Warn when a not required props does not have default value
-        // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/require-default-props.md
-        'react/require-default-props': 'warn',
-        // Warning when a Component can be a pure function
-        // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/prefer-stateless-function.md
-        'react/prefer-stateless-function': ['warn', { 'ignorePureComponents': true }],
-        // Error when declaring mutiple component in one file
-        // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-multi-comp.md
-        'react/no-multi-comp': ['warn', { 'ignoreStateless': true }],
-        // Error on unknown DOM property
-        // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-unknown-property.md
-        'react/no-unknown-property': 'error',
-        // Warning on missing prop types
-        // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/prop-types.md
-        'react/prop-types': 'warn',
-        // Error on missing return in render method, or method using JSX
-        // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/require-render-return.md
-        'react/require-render-return': 'error',
-        // Error when there is jsx without React var
-        // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/react-in-jsx-scope.md
-        'react/react-in-jsx-scope': 'error',
-        // Warning on should be autoclosing component
-        // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/self-closing-comp.md
-        'react/self-closing-comp': 'error',
-        // Warning on method order
-        // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/sort-comp.md
-        //'react/sort-comp': 'warn', // TODO to update
+        // This rule aims to ensure that any defaultProp has a non-required PropType declaration.
+        "react/default-props-match-prop-types": "warn",
+        // This rule aims to ensure that any non-required PropType declaration of a component has a corresponding defaultProps value.
+        "react/require-default-props": "warn",
+        // Prevent missing props validation in a React component definition
+        "react/prop-types": "warn",
+        // DisplayName allows you to name your component. This name is used by React in debugging messages.
+        "react/display-name": "warn",
+        // This rule should prevent usage of this.state inside setState calls. Such usage of this.state might result in errors when two state calls are called in batch and thus referencing old state and not the current state.
+        "react/no-access-state-in-setstate": "warn",
+        // Warn if an element uses an Array index in its key.
+        "react/no-array-index-key": "warn",
+        // This rule helps prevent problems caused by using children and the dangerouslySetInnerHTML prop at the same time. 
+        "react/no-danger-with-children": "error",
+        // Several methods are deprecated between React versions. This rule will warn you if you try to use a deprecated method. 
+        "react/no-deprecated": "warn",
+        // NEVER mutate this.state directly, as calling setState() afterwards may replace the mutation you made. Treat this.state as if it were immutable.
+        "react/no-direct-mutation-state": "error",
+        // Facebook will eventually deprecate findDOMNode as it blocks certain improvements in React in the future.
+        "react/no-find-dom-node": "warn",
+        // isMounted is an anti-pattern, is not available when using ES6 classes, and it is on its way to being officially deprecated.
+        "react/no-is-mounted": "warn",
+        // Warns if you have shouldComponentUpdate defined when defining a component that extends React.PureComponent.
+        "react/no-redundant-should-component-update": "error",
+        // ReactDOM.render() currently returns a reference to the root ReactComponent instance. However, using this return value is legacy and should be avoided because future versions of React
+        "react/no-render-return-value": "warn",
+        // Ensure no casing typos were made declaring static class properties and lifecycle methods. Checks that declared propTypes, contextTypes and childContextTypes is supported by react-props
+        "react/no-typos": "error",
+        // Currently, two ways are supported by React to refer to components. The first way, providing a string identifier, is now considered legacy in the official documentation. The documentation now prefers a second method -- referring to components by setting a property on the this object in the reference callback.
+        "react/no-string-refs": "warn",
+        // When using a stateless functional component (SFC), props/context aren't accessed in the same way as a class component or the create-react-class format
+        "react/no-this-in-sfc": "error",
+        // This rule prevents characters that you may have meant as JSX escape characters from being accidentally injected as a text node in JSX statements.
+        "react/no-unescaped-entities": "warn",
+        // Updating the state during the componentWillUpdate step can lead to indeterminate component state and is not allowed.
+        "react/no-will-update-set-state": "error",
+        // React offers you two way to create traditional components: using the ES5 create-react-class module or the new ES6 class system. This rule allow you to enforce one way or another.
+        "react/prefer-es6-class": "warn",
+        // Prevent missing React when using JSX
+        "react/react-in-jsx-scope": "error",
+        // When writing the render method in a component it is easy to forget to return the JSX content. This rule will warn if the return statement is missing.
+        "react/require-render-return": "error",
+        // There are some HTML elements that are only self-closing (e.g. img, br, hr). These are collectively known as void DOM elements. If you try to give these children
+        "react/void-dom-elements-no-children": "error",
+        // Allows you to enforce a consistent naming pattern for props which expect a boolean value.
+        "react/boolean-prop-naming": "warn",
+        // Restrict file extensions that may contain JSX
+        "react/jsx-filename-extension": "warn",
+        // Creating JSX elements with duplicate props can cause unexpected behavior in your application.
+        "react/jsx-no-duplicate-props": "warn",
+        // This rule prevents comment strings (e.g. beginning with // or /*) from being accidentally injected as a text node in JSX statements.
+        "react/jsx-no-comment-textnodes": "warn",
+        // Enforces coding style that user-defined JSX components are defined and referenced in PascalCase.
+        "react/jsx-pascal-case": "error",
+
         /* Comments */
         // Warning if no comments
         // http://eslint.org/docs/rules/require-jsdoc
