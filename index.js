@@ -28,36 +28,34 @@ module.exports = {
         node: true
     },
     rules: {
-        /* Import Plugin (recommended conf)*/
-        // analysis/correctness
-        // Check if import can be resolved on file system
-        // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-unresolved.md
-        "import/no-unresolved": "warning", // In case of alias, this should not be an error
-        // Check if the import is correctly done, according to the named export, or the default one
-        // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/named.md
+        /* Import Plugin */
+        // Ensures an imported module can be resolved to a module on the local filesystem, as defined by standard Node require.resolve behavior
+        "import/no-unresolved": "error",
+        // Verifies that all named imports are part of the set of named exports in the referenced module.
         "import/named": "error",
-        // Check if the import * is done correctly, ie that the named import used after do exists
-        // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/namespace.md
-        "import/namespace": "error",
-        // Check if an import using default as been exported the same way
-        // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/default.md
+        // If a default import is requested, this rule will report if there is no default export in the imported module.
         "import/default": "error",
-        // Check if the export are done properly (no multiple default, or named one)
-        // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/export.md
+        // Forbid import of modules using absolute paths
+        "import/no-absolute-path": "error",
+        // Forbid a module from importing itself
+        "import/no-self-import": "error",
+        // Ensures that there is no resolvable path back to this module via its dependencies.
+        "import/no-cycle": ["error", { maxDepth: 5 }],
+        // Use this rule to prevent unnecessary path segemnts in import and require statements.
+        "import/no-useless-path-segments": "warn",
+        // Reports funny business with exports, like repeated exports of names or defaults
         "import/export": "error",
-        // red flags (thus, warnings)
-        // Warning if the default export is imported the name of a named export
-        // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-named-as-default.md
-        "import/no-named-as-default": "warn",
-        // Warning if the import is made on default, then used a member instead of named import
-        // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-named-as-default-member.md
-        "import/no-named-as-default-member": "warn",
-        // Warning if duplicates imports are made on the same module
-        // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-duplicates.md
+        // Forbids the use of mutable exports with var or let.
+        "import/no-mutable-exports": "warn",
+        // Forbid the use of Node.js builtin modules. Can be useful for client-side web projects that do not have access to those modules.
+        "import/no-nodejs-modules": "error",
+        // This rule reports any imports that come after non-import statements.
+        "import/first": "warn",
+        // Reports if a resolved path is imported more than once.
         "import/no-duplicates": "warn",
-        // Warning if file has no import or export. See rule for Detail
-        // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/unambiguous.md
-        "import/unambiguous": "warn",
+        // Reports if a module's default export is unnamed.
+        "import/no-anonymous-default-export": ["error", { allowCallExpression: false }],
+
         /* Filename Plugin */
         // Warning if the filename does not match the kebab case (a-z\-)
         "filenames/match-regex": ["warn", "^[a-z-]+$"],
