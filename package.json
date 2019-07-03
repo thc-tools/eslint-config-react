@@ -1,42 +1,46 @@
 {
-    "name": "@thc/eslint-config-react",
-    "version": "1.0.0",
-    "description": "Eslint config, for React project",
-    "main": "index.js",
-    "scripts": {
-        "pre-release": "standard-version",
-        "pre-release-alpha": "standard-version --prerelease alpha",
-        "pre-release-beta": "standard-version --prerelease beta",
-        "release": "npm publish --access public && conventional-github-releaser -p angular && git push --follow-tags origin master",
-        "release-alpha": "npm publish --tag alpha --access public && conventional-github-releaser -p angular && git push --follow-tags origin master",
-        "release-beta": "npm publish --tag beta --access public && conventional-github-releaser -p angular && git push --follow-tags origin master",
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/thc-tools/eslint-config-react.git"
-    },
-    "keywords": [
-        "thc",
-        "eslint",
-        "react"
-    ],
-    "author": "THC-Tools",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/thc-tools/eslint-config-react/issues"
-    },
-    "homepage": "https://github.com/thc-tools/eslint-config-react#readme",
-    "devDependencies": {
-        "conventional-github-releaser": "3.1.3",
-        "standard-version": "6.0.1"
-    },
-    "dependencies": {
-        "babel-eslint": "10.0.2",
-        "eslint": "6.0.1",
-        "eslint-import-resolver-webpack": "0.11.1",
-        "eslint-plugin-filenames": "1.3.2",
-        "eslint-plugin-import": "2.18.0",
-        "eslint-plugin-react": "7.14.2"
-    }
+  "name": "@thc/eslint-config-react",
+  "version": "1.0.0",
+  "description": "Eslint config, for React project",
+  "main": "index.js",
+  "scripts": {
+    "pre-release": "standard-version",
+    "pre-release-alpha": "standard-version --prerelease alpha",
+    "pre-release-beta": "standard-version --prerelease beta",
+    "release": "npm publish --access public && conventional-github-releaser -p angular && git push --follow-tags origin master",
+    "release-alpha": "npm publish --tag alpha --access public && conventional-github-releaser -p angular && git push --follow-tags origin master",
+    "release-beta": "npm publish --tag beta --access public && conventional-github-releaser -p angular && git push --follow-tags origin master",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thc-tools/eslint-config-react.git"
+  },
+  "keywords": [
+    "thc",
+    "eslint",
+    "react"
+  ],
+  "author": "THC-Tools",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thc-tools/eslint-config-react/issues"
+  },
+  "homepage": "https://github.com/thc-tools/eslint-config-react#readme",
+  "devDependencies": {
+    "conventional-github-releaser": "3.1.3",
+    "standard-version": "6.0.1"
+  },
+  "dependencies": {
+    "babel-eslint": "10.0.2",
+    "eslint": "6.0.1",
+    "eslint-import-resolver-webpack": "0.11.1",
+    "eslint-plugin-filenames": "1.3.2",
+    "eslint-plugin-import": "2.18.0",
+    "eslint-plugin-react": "7.14.2",
+    "snyk": "^1.189.0"
+  },
+  "snyk": true
 }
